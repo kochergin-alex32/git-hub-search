@@ -1,9 +1,11 @@
 .card{
+    /* border: 1px solid white !important; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     height: 75px;
     border: none;
+    margin-top: 20px;
     
 }
 .img{
@@ -12,12 +14,11 @@
     width: 70px;
     height: 70px;
 }
-/* style="max-width: 540px;" */
+
 .cardBody{
     /* border: 1px solid yellow; */
     display: flex;
     flex-direction: column;
     justify-content:flex-end;
-    /* text-align: center; */
     color: white;
 }

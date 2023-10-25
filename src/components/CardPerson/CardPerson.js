@@ -44,7 +44,7 @@ function CardPerson() {
           </div>
 
     <div className='repos-title'>
-    <div className="card col-6 mb-3  border border-light bg-dark">
+    <div className="card col-6 mb-2  border border-light bg-dark">
 <div className="card-body">
 <a href=""  className="card-title text-danger">Body-matcher</a>
 <p className="card-text text-light">With supporting text below as a natural </p>
@@ -52,7 +52,7 @@ function CardPerson() {
 </div>
     </div>
 
-    <div className="card col-6 mb-3  border border-light bg-dark">
+    <div className="card col-6 mb-2 border border-light bg-dark">
     <div className="card-body">
         <a href=""  className="card-title text-danger">Body-matcher</a>
         <p className="card-text text-light">With supporting text below as a natural </p>
@@ -61,7 +61,7 @@ function CardPerson() {
     </div>
 
 
-    <div className="card col-6 mb-3  border border-light bg-dark">
+    <div className="card col-6 mb-2  border border-light bg-dark">
     <div className="card-body">
         <a href=""  className="card-title text-danger">Body-matcher</a>
         <p className="card-text text-light">With supporting text below as a natural </p>
@@ -69,7 +69,7 @@ function CardPerson() {
     </div>
     </div>
 
-    <div className="card col-6 mb-3  border border-light bg-dark">
+    <div className="card col-6 mb-2  border border-light bg-dark">
     <div className="card-body">
         <a href=""  className="card-title text-danger">Body-matcher</a>
         <p className="card-text text-light">With supporting text below as a natural </p>
@@ -77,7 +77,7 @@ function CardPerson() {
     </div>
     </div>
 
-    <div className="card col-6 mb-3  border border-light bg-dark">
+    <div className="card col-6 mb-2 border border-light bg-dark">
     <div className="card-body">
         <a href=""  className="card-title text-danger">Body-matcher</a>
         <p className="card-text text-light">With supporting text below as a natural </p>
@@ -85,7 +85,7 @@ function CardPerson() {
     </div>
     </div>
 
-    <div className="card col-6 mb-3  border border-light bg-dark">
+    <div className="card col-6 mb-2 border border-light bg-dark">
     <div className="card-body">
         <a href=""  className="card-title text-danger">Body-matcher</a>
         <p className="card-text text-light">With supporting text below as a natural </p>

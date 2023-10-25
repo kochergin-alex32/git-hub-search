@@ -3,6 +3,8 @@ import Cards from '../Cards/Cards'
 
 import '../MainPage/MainPage.css'
 import CardPerson from '../CardPerson/CardPerson'
+import NotFound from '../NotFound/NotFound'
+import SearchCard from '../SearchCard/SearchCard'
 
 function MainPage() {
   return (
@@ -27,8 +29,11 @@ function MainPage() {
 
         </div>
         <div className='content col-12 bg-dark'>
-            <Cards/>
-            {/* <CardPerson/> */}
+
+            {/* <Cards/> */}
+            <CardPerson/>
+            {/* <NotFound/> */}
+            {/* <SearchCard/> */}
            
         </div>
         </div>
