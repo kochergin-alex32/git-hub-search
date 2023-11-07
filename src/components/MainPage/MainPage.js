@@ -5,8 +5,12 @@ import '../MainPage/MainPage.css'
 import CardPerson from '../CardPerson/CardPerson'
 import NotFound from '../NotFound/NotFound'
 import SearchCard from '../SearchCard/SearchCard'
+import { useEffect,useState  } from 'react'
 
 function MainPage() {
+ 
+ 
+  
   return (
     <div className='bg-dark '>
         <div className='component'>
@@ -30,8 +34,8 @@ function MainPage() {
         </div>
         <div className='content col-12 bg-dark'>
 
-            {/* <Cards/> */}
-            <CardPerson/>
+            <Cards/>
+            {/* <CardPerson/> */}
             {/* <NotFound/> */}
             {/* <SearchCard/> */}
            
