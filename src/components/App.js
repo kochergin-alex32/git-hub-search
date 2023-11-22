@@ -12,7 +12,6 @@ import{BrowserRouter, Route, Routes}from 'react-router-dom'
 
 function App() {
   const [count, setCount]= useState([]);
-  const [data, setData] = useState(null)
   const logins = [];
 
   useEffect(()=>{
@@ -20,25 +19,26 @@ function App() {
     fetch(`https://api.github.com/users`).then((res)=>res.json()).then(data=>{setCount(data)})
   },[]);
   
- count!==0 && count.forEach((users)=>{
-   logins.push(users.login)
-  });
+//   console.log(count);
+//  count!==0 && count.forEach((users)=>{
+//    logins.push(users.login)
+//   });
 
-
+ 
      
 
-    function ff() {
-return new Promise(logins => setTimeout(logins, 500));
-}
+//     function ff() {
+// return new Promise(logins => setTimeout(logins, 500));
+// }
 
-(async function() {
-for (let i = 0; i < logins.length; i++) {
-// console.log('before', logins[i]);
-await ff();
-console.log('nahuy', logins[i]);
-   
-}
-})();
+// (async function() {
+// for (let i = 0; i < logins.length; i++) {
+
+// await ff();
+// console.log('nahuy', logins[i]);
+//     // fetch(`https://api.github.com/users`).then((res)=>res.json()).then(data=>{setCount(data)})
+// }
+// })();
    
 
   
@@ -50,17 +50,19 @@ console.log('nahuy', logins[i]);
     
       <div className='content col-12 bg-dark'>
 
-        {/* <BrowserRouter>
+        <BrowserRouter>
           <Routes>
-              <Route path='/' element={<Cards />}/>
-              <Route path='person' element={<CardPerson/>}/>
+              <Route path='/' element={<Cards count={count} logins={logins} />}/>
+              {/* получаем юзера по id благодаря 'count/:id' */}
+              <Route path='count/:id' element={<CardPerson count={count} />}/>
+              {/* <Route path='person/:id' element={<CardPerson/>}/> */}
               <Route path='search' element={<SearchCard/>}/>
               <Route path='*' element={<NotFound/>}/>
           </Routes>
-        </BrowserRouter> */}
+        </BrowserRouter>
 
 
-        <Cards count={count} logins={logins}/> 
+        {/* <Cards count={count} logins={logins}/>  */}
         {/* <CardPerson/> */}
         {/* <NotFound/> */}
         {/* <SearchCard/> */}
