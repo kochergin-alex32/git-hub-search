@@ -1,16 +1,26 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import person from '../../assets/images/person.jpg'
-import '../Cards/Cards.css'
-// import { useEffect } from 'react'
 
-function Cards({count, logins}) {
-   
+import '../Cards/Cards.css'
+import NotFound from '../NotFound/NotFound';
+
+
+function Cards({count, logins, searchValue}) {
+  // console.log(searchValue);
+   const users = count.filter((obj)=>{
+    if(obj.login.toLowerCase().includes(searchValue.toLowerCase())){
+      return true
+    }
+    return false
+   })
+
+   console.log(users);
  
   return (
     <>
-{count.map((id)=>((count.length!==0)?
-      <Link to={`count/${id.login}`}  key='ind' className='text-decoration-none card col-sx-6 col-md-4 bg-dark'>
+{users.length==0 && count.length!==0 ? <NotFound searchValue={searchValue}/> :
+
+(users.map((id)=>((count.length!==0 )?   <Link to={`count/${id.login}`}  key='ind' className='text-decoration-none card col-sx-6 col-md-4 bg-dark'>
       <div className='img col-3 bg-light'>
           <img  className='img'src={id.avatar_url} alt="" />
           
@@ -19,10 +29,9 @@ function Cards({count, logins}) {
           <span > <a className='text-danger' href="">{id.login}</a>, 15 репозиториев</span>
           <p >hazvanie jrganizacii</p>
       </div>
-  </Link>
-  :
-  ''
-))}
+  </Link> : ''))
+) 
+}
     
     
     
@@ -35,7 +44,8 @@ export default Cards
 
 
 
-
+{/* <h1 className='text-danger'>not faund</h1>  */}
+     
 
 
  

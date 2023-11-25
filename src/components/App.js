@@ -5,19 +5,19 @@ import Header from "./Header/Header";
 
 import Cards from "./Cards/Cards";
 import CardPerson from "./CardPerson/CardPerson";
-import NotFound from "./NotFound/NotFound";
-import SearchCard from "./SearchCard/SearchCard";
+
 
 import{BrowserRouter, Route, Routes}from 'react-router-dom'
 
 function App() {
   const [count, setCount]= useState([]);
   const logins = [];
-
+  const [searchValue, setSearchValue] = useState('');
+  // console.log(searchValue,'pomenalos');
   useEffect(()=>{
     
     fetch(`https://api.github.com/users`).then((res)=>res.json()).then(data=>{setCount(data)})
-  },[]);
+  },[setCount]);
   
 //   console.log(count);
 //  count!==0 && count.forEach((users)=>{
@@ -44,31 +44,22 @@ function App() {
   
 
   return (
-    <div className="App">
-    
-    <Header/>
-    
-      <div className='content col-12 bg-dark'>
+   <BrowserRouter>
+      <div className="App">
+      
+      <Header searchValue={searchValue} setSearchValue={setSearchValue}/>
+      
+        <div className='content col-12 bg-dark'>
 
-        <BrowserRouter>
-          <Routes>
-              <Route path='/' element={<Cards count={count} logins={logins} />}/>
-              {/* получаем юзера по id благодаря 'count/:id' */}
-              <Route path='count/:id' element={<CardPerson count={count} />}/>
-              {/* <Route path='person/:id' element={<CardPerson/>}/> */}
-              <Route path='search' element={<SearchCard/>}/>
-              <Route path='*' element={<NotFound/>}/>
-          </Routes>
-        </BrowserRouter>
-
-
-        {/* <Cards count={count} logins={logins}/>  */}
-        {/* <CardPerson/> */}
-        {/* <NotFound/> */}
-        {/* <SearchCard/> */}
-
-       </div>
-     </div>
+            <Routes>
+                <Route path='/' element={<Cards count={count} logins={logins} searchValue={searchValue} />}/>
+                
+                <Route path='count/:id' element={<CardPerson count={count} />}/>
+                
+            </Routes>
+        </div>
+      </div>
+  </BrowserRouter>
   );
 }
 
