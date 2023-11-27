@@ -65,3 +65,20 @@ justify-content: space-between;
     justify-content: space-around;
     
 }
+.all-rep{
+    /* border: 1px solid white; */
+    width: 130px;
+    text-align: center;
+    cursor: pointer;
+}
+.to-up{
+    /* border: 1px solid white; */
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+   
+   
+}
+.to-up>p{
+    cursor: pointer;
+}

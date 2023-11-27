@@ -1,28 +1,25 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useLocation, useParams, Link } from 'react-router-dom';
-import persona from '../../assets/images/persona.jpg'
+
 import '../CardPerson/CardPerson.css'
 import Repos from '../Repos/Repos';
 function CardPerson(count) {
-const [data, setData] = useState(null)
 
+const [data, setData] = useState(null);
+const [isActive, setisActive] = useState(false);
+const [up, setUp]= useState(0)
 const users = count.count;
-console.log(123 + users);
 const  {id} = useParams();
-// console.log(id); 
 const user = users.find((item => item.login==id));
-console.log(user);
-useEffect(()=>{
-    
-    fetch(`https://api.github.com/users/${id}`).then((res)=>res.json()).then(data=>{setData(data)});
 
-    // fetch(`https://api.github.com/users/${id}/repos`).then((r)=>r.json()).then(d=>{setRepos(d)})
-    
+useEffect(()=>{
+    fetch(`https://api.github.com/users/${id}`).then((res)=>res.json()).then(data=>{setData(data)});
   },[]);
 
-console.log(data)
-//  console.log(repos);  
+console.log(up
+    );
+// console.log(isActive);
   return (
   users.length > 0 && id && data &&
     < div className='container  '>
@@ -64,14 +61,22 @@ console.log(data)
     </div>
     <div className='repos col-12'>
                 <h1 className='text-light'> РЕПОЗИТОРИИ</h1>
-                <a className='text-danger' >Все репозитории</a>
+                <div className='all-rep'>
+                    {/* меняю кликом isActive с true на false */}
+                     <a   onClick={() => setisActive((prevActive) => !prevActive)} className={isActive ? 'active text-danger' : 'text-danger'}  >{isActive==false?'Все репозитории': 'Свернуть   ' }</a>
+                </div>
+               
+               
           </div>
 
     <div className='repos-title'>
-        <Repos data={data} />
+        <Repos data={data}  isActive={isActive}/>
  
     </div>
+    {/* <div className='to-up'>
 
+    <p onClick={setUp} className='text-danger '> &#8593; наверх</p>
+    </div> */}
     
   </div >
   )
@@ -82,6 +87,8 @@ export default CardPerson
 
 
 
+{/* меняю кликом isActive с true на false */}
+ {/* <button onClick={() => setisActive((prevActive) => !prevActive)} className={isActive ? 'likeBtn_active' : 'likeBtn'}>push</button> */}
 
 
 
@@ -93,55 +100,4 @@ export default CardPerson
 
 
 
-
-
-
-{/* <div className="card col-6 mb-2  border border-light bg-dark">
-<div className="card-body">
-<a href=""  className="card-title text-danger">{repos[0].name}</a>
-<p className="card-text text-light">With supporting text below as a natural </p>
-
-</div>
-    </div>
-
-    <div className="card col-6 mb-2 border border-light bg-dark">
-    <div className="card-body">
-        <a href=""  className="card-title text-danger">{repos[1].name}</a>
-        <p className="card-text text-light">With supporting text below as a natural </p>
-    
-    </div>
-    </div>
-
-
-    <div className="card col-6 mb-2  border border-light bg-dark">
-    <div className="card-body">
-        <a href=""  className="card-title text-danger">{repos[2].name}</a>
-        <p className="card-text text-light">With supporting text below as a natural </p>
-    
-    </div>
-    </div>
-
-    <div className="card col-6 mb-2  border border-light bg-dark">
-    <div className="card-body">
-        <a href=""  className="card-title text-danger">{repos[3].name}</a>
-        <p className="card-text text-light">With supporting text below as a natural </p>
-    
-    </div>
-    </div>
-
-    <div className="card col-6 mb-2 border border-light bg-dark">
-    <div className="card-body">
-        <a href=""  className="card-title text-danger">Body-matcher</a>
-        <p className="card-text text-light">With supporting text below as a natural </p>
-    
-    </div>
-    </div>
-
-    <div className="card col-6 mb-2 border border-light bg-dark">
-    <div className="card-body">
-        <a href=""  className="card-title text-danger">Body-matcher</a>
-        <p className="card-text text-light">With supporting text below as a natural </p>
-    
-    </div>
-    </div> */}
 

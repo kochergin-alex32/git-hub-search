@@ -14,7 +14,7 @@ function Cards({count, logins, searchValue}) {
     return false
    })
 
-   console.log(users);
+  //  console.log(users);
  
   return (
     <>
