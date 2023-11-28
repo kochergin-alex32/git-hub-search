@@ -8,7 +8,7 @@ function CardPerson(count) {
 
 const [data, setData] = useState(null);
 const [isActive, setisActive] = useState(false);
-const [up, setUp]= useState(0)
+
 const users = count.count;
 const  {id} = useParams();
 const user = users.find((item => item.login==id));
@@ -16,10 +16,9 @@ const user = users.find((item => item.login==id));
 useEffect(()=>{
     fetch(`https://api.github.com/users/${id}`).then((res)=>res.json()).then(data=>{setData(data)});
   },[]);
+  console.log(data);
+//  console.log(data.public_repos);
 
-console.log(up
-    );
-// console.log(isActive);
   return (
   users.length > 0 && id && data &&
     < div className='container  '>
@@ -30,9 +29,13 @@ console.log(up
             
             </div>
         <div className='cardBody col-8' >
-                <h1>{data.name},&nbsp;
-                     <a className='text-danger text-decoration-none' href="">{data.login}</a>
-                     </h1>
+            {data.name ? <h1>{data.name},&nbsp;
+                     <a className='text-danger text-decoration-none' >{data.login}</a>
+                     </h1>:
+                <h1>имя отсутствует,&nbsp;
+                     <a className='text-danger text-decoration-none' >{data.login}</a>
+                     </h1> 
+                     }
           <ul >
             <li>
                 <div>
@@ -49,12 +52,20 @@ console.log(up
                      <span> подписок</span>
                  </div>
             </li>
-                  
-            <li>
+              
+             {data.blog ?  <li>
                 <div>
-                    <p className='text-danger' >{data.blog}</p>
+                    < p className='text-danger '>{data.blog}</p>
+                </div>
+            </li> 
+            :
+               
+            <li className='blog'>
+                <div>
+                    <p className='text-light blog' >{data.blog}</p>
                 </div>
             </li>
+             }  
           </ul>
          
         </div>
@@ -73,16 +84,37 @@ console.log(up
         <Repos data={data}  isActive={isActive}/>
  
     </div>
-    {/* <div className='to-up'>
+    {isActive && data.public_repos>6 && <div className='to-up'>
 
-    <p onClick={setUp} className='text-danger '> &#8593; наверх</p>
-    </div> */}
+        <a href="#"   className='text-danger text-decoration-none'> &#8593; наверх</a>
+            </div>
+ }
     
   </div >
   )
 }
 
 export default CardPerson
+
+
+// import React from 'react';
+// import './BtnScrollUp.scss'
+
+// function BtnScrollUp() {
+
+// const handlerScrollUp = () => {
+// if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+// window.scrollBy(0, -50);
+// setTimeout(handlerScrollUp, 10);
+// }
+// }
+
+// return (
+// <div className={'btn-scroll-up'} onClick={handlerScrollUp}>▲</div>
+// );
+// }
+
+// export default BtnScrollUp;
 
 
 
