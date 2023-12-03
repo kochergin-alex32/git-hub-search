@@ -11,21 +11,32 @@ import{BrowserRouter, Route, Routes}from 'react-router-dom'
 
 function App() {
   const [count, setCount]= useState([]);
+  
   const logins = [];
   const [searchValue, setSearchValue] = useState('');
   // console.log(searchValue,'pomenalos');
   useEffect(()=>{
-    
-    fetch(`https://api.github.com/users`).then((res)=>res.json()).then(data=>{setCount(data)})
+    fetch(`https://api.github.com/users`,{
+      method:"GET",
+      headers:{
+        Authorization:"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"
+      }
+      
+    }).then((res)=>res.json()).then(data=>{setCount(data)})
   },[setCount]);
   
-//   console.log(count);
-//  count!==0 && count.forEach((users)=>{
-//    logins.push(users.login)
-//   });
-
+  
+    // console.log(count);
+   count!==0 && count.forEach((users)=>{
+       logins.push(users.login)
+      });
+    
+      
+      
+      
+      // fetch(`https://api.github.com/users/`).then((res)=>res.json()).then(d=>{setRepos(d)})
+      
  
-     
 
 //     function ff() {
 // return new Promise(logins => setTimeout(logins, 500));
@@ -36,12 +47,11 @@ function App() {
 
 // await ff();
 // console.log('nahuy', logins[i]);
-//     // fetch(`https://api.github.com/users`).then((res)=>res.json()).then(data=>{setCount(data)})
+
 // }
 // })();
    
 
-  
 
   return (
    <BrowserRouter>

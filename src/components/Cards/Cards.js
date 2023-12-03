@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
 import '../Cards/Cards.css'
@@ -6,6 +6,7 @@ import NotFound from '../NotFound/NotFound';
 
 
 function Cards({count, logins, searchValue}) {
+  const [repos, setRepos] = useState([]);
   // console.log(searchValue);
    const users = count.filter((obj)=>{
     if(obj.login.toLowerCase().includes(searchValue.toLowerCase())){
@@ -13,6 +14,43 @@ function Cards({count, logins, searchValue}) {
     }
     return false
    })
+
+   console.log(logins);  
+  //  useEffect(()=>{
+  //    fetch(`https://api.github.com/users/defunkt`,{
+  //      method:"GET",
+  //      headers:{
+  //        Authorization:""
+  //      }
+       
+  //    }).then((res)=>res.json()).then(data=>{setRepos(data)})
+  //  },[logins]);
+
+ 
+
+  //  console.log(repos);
+
+ 
+
+//        function ff() {
+// return new Promise(logins => setTimeout(logins, 1000));
+// }
+
+// (async function() {
+// for (let i = 0; i < logins.length; i++) {
+
+// await ff();
+// // console.log('nahuy', logins[i]);
+// fetch(`https://api.github.com/users/{logins[i]}`,{
+//        method:"GET",
+//        headers:{
+//          Authorization:""
+//        }
+       
+//      }).then((res)=>res.json()).then(data=>{setRepos(data)})
+// console.log(repos);
+// }
+// })();
 
   //  console.log(users);
  
