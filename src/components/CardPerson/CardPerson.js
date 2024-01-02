@@ -4,15 +4,16 @@ import { useLocation, useParams, Link } from 'react-router-dom';
 
 import '../CardPerson/CardPerson.css'
 import Repos from '../Repos/Repos';
-const CardPerson = memo(function (count) {
+const CardPerson = memo(function ({users}) {
 
     const [data, setData] = useState(null);
     const [isActive, setisActive] = useState(false);
-    
-    const users = count.count;
+    console.log(users);
+    // const users = count.count;
     const  {id} = useParams();
+    console.log(id);
     const user = users.find((item => item.login==id));
-    
+    // console.log(user);
     useEffect(()=>{
         fetch(`https://api.github.com/users/${id}`).then((res)=>res.json()).then(data=>{setData(data)});
       },[]);

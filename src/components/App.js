@@ -1,12 +1,112 @@
-import React, { useState, useEffect,  } from "react";
+import React, { useState, useEffect, useMemo,useRef } from "react";
 import "./App.css";
 
 import Header from "./Header/Header";
-
 import Cards from "./Cards/Cards";
 import CardPerson from "./CardPerson/CardPerson";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+// function App() {
+//   const [count, setCount] = useState([]);
+//   const [repos, setRepos] = useState([]);
+//   const [searchValue, setSearchValue] = useState("");
+
+//   const logins = [];
+//   const urls = [];
+//   const arr = [];
+//   // console.log(searchValue,'pomenalos');
+//   useEffect(() => {
+//     fetch(`https://api.github.com/users`, {
+//       method: "GET",
+//       headers: {
+//         Authorization: "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",
+//       },
+//     })
+//       .then((res) => res.json())
+//       .then((data) => {
+//         setCount(data);
+//       });
+//   }, []);
+
+//   // console.log(count);
+//   count !== 0 &&
+//     count.forEach((users) => {
+//       logins.push(users.login);
+//     });
+//     count!==0 && count.forEach((users)=>{
+//         urls.push(users.url)
+//        });
+
+// // console.log(urls);
+
+// //  const reposHand= useMemo(()=>{
+// //          urls.map((ind)=>{
+// //              fetch(ind,{
+// //      method:"GET",
+// //           headers:{
+// //             Authorization:""
+// //           }
+          
+// //         }).then((res)=>res.json()).then(data=>{
+// //       arr.push(data)
+// //          // console.log(arr);
+// //          setRepos(arr)
+// //        })
+// //        })
+// // },[])
+// // console.log(reposHand);
+//  useEffect(()=>{
+       
+   
+       
+       
+//        urls.map((ind)=>{
+//              fetch(ind,{
+//      method:"GET",
+//           headers:{
+//             Authorization:""
+//           }
+          
+//         }).then((res)=>res.json()).then(data=>{
+//       arr.push(data)
+//          // console.log(arr);
+//          setRepos(arr)
+//        })
+//        })
+    
+    
+//        },[count, setCount]);
+// console.log(repos);
+
+//   return (
+//     <BrowserRouter>
+//       <div className="App">
+//         <Header searchValue={searchValue} setSearchValue={setSearchValue} />
+//         <div className="content col-12 bg-dark">
+//         <StartSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
+//           <Routes>
+//             <Route
+//               path="/"
+//               element={
+//                 <Cards
+//                   count={count}
+               
+//                   searchValue={searchValue}
+//                   repos={repos}
+//                   setRepos={setRepos}
+//                 />
+//               }
+//             />
+
+//             <Route path="count/:id" element={<CardPerson count={count} />} />
+//           </Routes>
+//         </div>
+//       </div>
+//     </BrowserRouter>
+//   );
+// }
+
 
 function App() {
   const [count, setCount] = useState([]);
@@ -28,57 +128,44 @@ function App() {
       .then((data) => {
         setCount(data);
       });
-  }, [setCount]);
+  }, []);
 
   // console.log(count);
   count !== 0 &&
     count.forEach((users) => {
       logins.push(users.login);
     });
-    count!==0 && count.forEach((users)=>{
-        urls.push(users.url)
-       });
+  count !== 0 &&
+    count.forEach((users) => {
+      urls.push(users.url);
+    });
 
-// console.log(urls);
+  console.log(urls);
 
-//  const reposHand= useMemo(()=>{
-//          urls.map((ind)=>{
-//              fetch(ind,{
-//      method:"GET",
-//           headers:{
-//             Authorization:""
-//           }
-          
-//         }).then((res)=>res.json()).then(data=>{
-//       arr.push(data)
-//          // console.log(arr);
-//          setRepos(arr)
-//        })
-//        })
-// },[])
-// console.log(reposHand);
- useEffect(()=>{
+
+  
+useEffect(()=>{
        
    
        
        
-       urls.map((ind)=>{
-             fetch(ind,{
-     method:"GET",
-          headers:{
-            Authorization:""
-          }
-          
-        }).then((res)=>res.json()).then(data=>{
-      arr.push(data)
-         // console.log(arr);
-         setRepos(arr)
-       })
-       })
-    
-    
-       },[count, setCount, setRepos]);
-console.log(repos);
+  urls.map((ind)=>{
+        fetch(ind,{
+method:"GET",
+     headers:{
+       Authorization:""
+     }
+     
+   }).then((res)=>res.json()).then(data=>{
+ arr.push(data)
+    // console.log(arr);
+    setRepos(arr)
+  })
+  })
+
+
+  },[count, setCount]);
+   console.log(repos);
 
   return (
     <BrowserRouter>
@@ -96,6 +183,7 @@ console.log(repos);
                   searchValue={searchValue}
                   repos={repos}
                   setRepos={setRepos}
+           
                 />
               }
             />
@@ -108,7 +196,20 @@ console.log(repos);
   );
 }
 
+
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+// чтото закоментированое хз если не нужно  удалю
 
 // fetch(`https://api.github.com/users/`).then((res)=>res.json()).then(d=>{setRepos(d)})
 
@@ -124,3 +225,114 @@ export default App;
 
 // }
 // })();
+// urls.map((ind) => {
+  //   fetch(ind, {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: "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",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       arr.push(data);
+  //       // console.log(arr);
+  //       setRepos(arr);
+  //     });
+  // });
+
+
+//   const visibleTodos = useMemo(
+//     () => urls.map((ind)=>{
+//       fetch(ind,{
+// method:"GET",
+//    headers:{
+//      Authorization:""
+//    }
+   
+//  }).then((res)=>res.json()).then(data=>{
+// arr.push(data)
+//   // console.log(arr);
+//   setRepos(arr)
+// })
+// }),
+//     [count,setCount]
+//   );
+// console.log( visibleTodos)
+
+// const throttled = useRef((() => {      
+//   urls.map((ind)=>{
+//         fetch(ind,{
+// method:"GET",
+//      headers:{
+//        Authorization:""
+//      }
+     
+//    }).then((res)=>res.json()).then(data=>{
+//  arr.push(data)
+//     // console.log(arr);
+//     setRepos(arr)
+//   })
+//   })}, 1000))
+
+//   useEffect(() => throttled(repos), [])
+
+
+
+// const [count, setCount] = useState([]);
+// const [repos, setRepos] = useState([]);
+// const [searchValue, setSearchValue] = useState("");
+
+// const logins = [];
+// const urls = [];
+// const arr = [];
+// // console.log(searchValue,'pomenalos');
+// useEffect(() => {
+//   fetch(`https://api.github.com/users`, {
+//     method: "GET",
+//     headers: {
+//       Authorization: "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",
+//     },
+//   })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       setCount(data);
+//     });
+// }, []);
+
+// // console.log(count);
+// count !== 0 &&
+//   count.forEach((users) => {
+//     logins.push(users.login);
+//   });
+// count !== 0 &&
+//   count.forEach((users) => {
+//     urls.push(users.url);
+//   });
+
+// console.log(urls);
+
+
+
+// useEffect(()=>{
+     
+ 
+     
+     
+// urls.map((ind)=>{
+//       fetch(ind,{
+// method:"GET",
+//    headers:{
+//      Authorization:""
+//    }
+   
+//  }).then((res)=>res.json()).then(data=>{
+// arr.push(data)
+//   // console.log(arr);
+//   setRepos(arr)
+// })
+// })
+
+
+// },[count, setCount]);
+//  console.log(repos);
+
