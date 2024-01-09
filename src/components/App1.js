@@ -29,15 +29,18 @@ function App1() {
         return dataUsers;
       })
       .then((dataUsers) => {
+        
         return Promise.all(
           dataUsers.map(async (url) => {
             return await fetch(url)
               .then((res) => res.json())
               .then((data) => data);
+             
           })
         );
       })
       .then((data) => setUsers(data));
+      // console.log(users);
   }, []);
   return (
     // <div>App1</div>

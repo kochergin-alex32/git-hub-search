@@ -4,27 +4,30 @@ import { useLocation, useParams, Link } from 'react-router-dom';
 
 import '../CardPerson/CardPerson.css'
 import Repos from '../Repos/Repos';
+import Folovers from '../Folovers/Folovers';
+import Folovings from './Folovings/Folovings';
+
 const CardPerson = memo(function ({users}) {
 
     const [data, setData] = useState(null);
     const [isActive, setisActive] = useState(false);
-    console.log(users);
+    // console.log(users);
     // const users = count.count;
     const  {id} = useParams();
-    console.log(id);
+    // console.log(id);
     const user = users.find((item => item.login==id));
     // console.log(user);
     useEffect(()=>{
         fetch(`https://api.github.com/users/${id}`).then((res)=>res.json()).then(data=>{setData(data)});
       },[]);
-      console.log(data);
+    //   console.log(data);
     //  console.log(data.public_repos);
     const isActiveHandler = useCallback(()=>{
     
        setisActive((prevActive) => !prevActive)
       
     },[isActive]);
-    
+   
       return (
       users.length > 0 && id && data &&
         < div className='container  '>
@@ -44,24 +47,26 @@ const CardPerson = memo(function ({users}) {
                          }
               <ul >
                 <li>
-                    <div>
+                    {/* <div>
                         <p className='text-danger' >{data.followers}</p> 
                         &nbsp;
                          <span> подписчикa</span>
-                  </div>
+                  </div> */}
+                         <Folovers data={data}/>
                   </li>
                 <li>
-                    <div>
+                    {/* <div>
                         <p className='text-danger' >{data.following
     }</p> 
                         &nbsp;
                          <span> подписок</span>
-                     </div>
+                     </div> */}
+                     <Folovings data={data}/>
                 </li>
                   
                  {data.blog ?  <li>
                     <div>
-                        < p className='text-danger '>{data.blog}</p>
+                        < a href={data.blog} className='text-danger '>{data.blog}</a>
                     </div>
                 </li> 
                 :
