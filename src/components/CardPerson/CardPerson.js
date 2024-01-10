@@ -5,23 +5,18 @@ import { useLocation, useParams, Link } from 'react-router-dom';
 import '../CardPerson/CardPerson.css'
 import Repos from '../Repos/Repos';
 import Folovers from '../Folovers/Folovers';
-import Folovings from './Folovings/Folovings';
+import Folovings from '../Folovings/Folovings';
 
 const CardPerson = memo(function ({users}) {
 
     const [data, setData] = useState(null);
     const [isActive, setisActive] = useState(false);
-    // console.log(users);
-    // const users = count.count;
     const  {id} = useParams();
-    // console.log(id);
     const user = users.find((item => item.login==id));
-    // console.log(user);
     useEffect(()=>{
         fetch(`https://api.github.com/users/${id}`).then((res)=>res.json()).then(data=>{setData(data)});
       },[]);
-    //   console.log(data);
-    //  console.log(data.public_repos);
+    console.log(data);
     const isActiveHandler = useCallback(()=>{
     
        setisActive((prevActive) => !prevActive)
@@ -47,26 +42,15 @@ const CardPerson = memo(function ({users}) {
                          }
               <ul >
                 <li>
-                    {/* <div>
-                        <p className='text-danger' >{data.followers}</p> 
-                        &nbsp;
-                         <span> подписчикa</span>
-                  </div> */}
                          <Folovers data={data}/>
                   </li>
                 <li>
-                    {/* <div>
-                        <p className='text-danger' >{data.following
-    }</p> 
-                        &nbsp;
-                         <span> подписок</span>
-                     </div> */}
                      <Folovings data={data}/>
                 </li>
                   
                  {data.blog ?  <li>
                     <div>
-                        < a href={data.blog} className='text-danger '>{data.blog}</a>
+                        < a href={data.blog} target='_blank' className='text-danger '>{data.blog}</a>
                     </div>
                 </li> 
                 :
@@ -109,30 +93,6 @@ const CardPerson = memo(function ({users}) {
 export default CardPerson
 
 
-// import React from 'react';
-// import './BtnScrollUp.scss'
-
-// function BtnScrollUp() {
-
-// const handlerScrollUp = () => {
-// if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-// window.scrollBy(0, -50);
-// setTimeout(handlerScrollUp, 10);
-// }
-// }
-
-// return (
-// <div className={'btn-scroll-up'} onClick={handlerScrollUp}>▲</div>
-// );
-// }
-
-// export default BtnScrollUp;
-
-
-
-
-{/* меняю кликом isActive с true на false */}
- {/* <button onClick={() => setisActive((prevActive) => !prevActive)} className={isActive ? 'likeBtn_active' : 'likeBtn'}>push</button> */}
 
 
 

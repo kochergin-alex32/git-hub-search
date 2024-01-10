@@ -7,7 +7,6 @@ const Header = memo(function ({searchValue, setSearchValue}) {
   const searchValueHandler = useCallback(()=>setSearchValue(''),[searchValue]);
   const cangeValueHandler = useCallback((event)=> setSearchValue(event.target.value),[searchValueHandler,searchValue]);
   const location = useLocation();
-  // console.log(location);
   return (
     <div className='header' >
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,11 +36,3 @@ const Header = memo(function ({searchValue, setSearchValue}) {
 
 export default Header
 
-// (event)=> setSearchValue(event.target.value)
-
- {/* <input className="form-control me-2" type="search" placeholder="поиск пользователя" aria-label="Search"/>
-    <button onClick={(event)=> console.log(event.target.value)}  className="btn btn-outline-success bg-danger text-light border-danger" type="submit">найти</button> */}
-
-
-
-    // <Search cangeValueHandler={cangeValueHandler} searchValue={searchValue}/>

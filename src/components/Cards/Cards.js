@@ -7,26 +7,18 @@ import Loading from '../Loading/Loading';
 
 
 function Cards({count, repos, searchValue, users1}) {
- 
-  // console.log(users1);
-  
- 
 
- 
+  
   const users = users1.filter((obj)=>{
     if(obj.login.toLowerCase().includes(searchValue.toLowerCase())){
       return true
     }
     return false
-   })
-
- console.log(users);
-  //  const users = repos.filter((obj)=>{
-  //   if(obj.login.toLowerCase().includes(searchValue.toLowerCase())){
-  //     return true
-  //   }
-  //   return false
-  //  })
+  })
+  
+  
+  
+  
 
   
   return (
@@ -44,7 +36,8 @@ function Cards({count, repos, searchValue, users1}) {
               </div>
               <div className=' text-light  col-8 mt-2'>
               <div  >
-              <span className='d'> <a className='text-danger' href="">{id.login}</a>, {id.public_repos} репозиториев</span>
+              <span className='d'> <a className='text-danger' href="">{id.login}</a>,
+               {id.public_repos} репозиториев</span>
               <p className='company' >{id.company}</p>
           </div>
               </div>
