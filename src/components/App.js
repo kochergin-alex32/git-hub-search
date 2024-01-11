@@ -22,26 +22,30 @@ function App() {
         Authorization: "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",
       },
     })
-      .then((res) => res.json())
-      .then((data) => {
-        const dataUsers = data.map((user) => {
-          return user.url;
-        });
-        return dataUsers;
-      })
-      .then((dataUsers) => {
-       
-        return Promise.all(
-          dataUsers.map(async (url) => {
-            return await fetch(url)
-              .then((res) => res.json())
+    .then((res) => res.json())
+    .then((data) => {
+      const dataUsers = data.map((user) => {
+        return user.url;
+      });
+      return dataUsers;
+    })
+    .then((dataUsers) => {
+      
+      return Promise.all(
+        dataUsers.map(async (url) => {
+          return await fetch(url)
+          .then((res) => res.json())
+         
+              
               .then((data) => data);
              
           })
         );
       })
+      
       .then((data) => setUsers(data))
-      .catch((err)=>alert("ошибка запроса на сервер, попобуйте позже"));
+      .catch((err)=>alert("ошибка запроса на сервер, попобуйте позднее"));
+      
       // console.log(users);
 
   }, []);

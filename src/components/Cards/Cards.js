@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../Cards/Cards.css'
 import NotFound from '../NotFound/NotFound';
 import Loading from '../Loading/Loading';
+import ReposCount from '../ReposCount/ReposCount';
 
 
 function Cards({count, repos, searchValue, users1}) {
@@ -37,18 +38,17 @@ function Cards({count, repos, searchValue, users1}) {
               <div className=' text-light  col-8 mt-2'>
               <div  >
               <span className='d'> <a className='text-danger' href="">{id.login}</a>,
-               {id.public_repos} репозиториев</span>
+              <ReposCount  id={id}/>
+               
+               </span>
               <p className='company' >{id.company}</p>
           </div>
               </div>
           
-      </Link>))
-    )
-      )
-    
-    
-   
-    }
+      </Link>
+      
+     ))
+    ))}
         
         
         
